@@ -13,7 +13,6 @@ def new_sequence():
     random_sequence = [random.randrange(0, 10, 1) for i in range(4)]
     count_guesses = 0
     l1.delete('1.0', 'end')
-    print("random sequence: " + "".join(map(str, random_sequence)))
 
 
 def cows_and_bulls():
@@ -88,6 +87,5 @@ l2.place(x=5, y=190)
 
 count_guesses = 0
 random_sequence = [random.randrange(0, 10, 1) for i in range(4)]
-print("random sequence: " + "".join(map(str, random_sequence)))
 
 root.mainloop()
