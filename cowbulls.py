@@ -56,7 +56,7 @@ def cows_and_bulls():
                     bull += random_sequence.count(guess_number[i]) - count_cow
             elif guess_number.count(guess_number[i]) < random_sequence.count(guess_number[i]) and guess_number[i] in save_cow:
                 count_cow = save_cow.count(guess_number[i])
-                bull += random_sequence.count(guess_number[i]) - count_cow
+                bull += guess_number.count(guess_number[i]) - count_cow
             else:
                 pass
     l1.insert(INSERT, "".join(map(str, guess_number)) + "\n")
