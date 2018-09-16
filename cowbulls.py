@@ -45,8 +45,15 @@ def cows_and_bulls():
             elif guess_number.count(guess_number[i]) < random_sequence.count(guess_number[i]) and guess_number[i] not in save_cow:
                 bull += guess_number.count(guess_number[i])
             elif guess_number.count(guess_number[i]) >= random_sequence.count(guess_number[i]) and guess_number[i] in save_cow:
-                count_cow = save_cow.count(guess_number[i])
-                bull += random_sequence.count(guess_number[i]) - count_cow
+                if guess_number[i] in count_guess_repeat:
+                    pass
+                elif guess_number.count(guess_number[i]) > 1:
+                    count_cow = save_cow.count(guess_number[i])
+                    bull += random_sequence.count(guess_number[i]) - count_cow
+                    count_guess_repeat.append(guess_number[i])
+                else:
+                    count_cow = save_cow.count(guess_number[i])
+                    bull += random_sequence.count(guess_number[i]) - count_cow
             elif guess_number.count(guess_number[i]) < random_sequence.count(guess_number[i]) and guess_number[i] in save_cow:
                 count_cow = save_cow.count(guess_number[i])
                 bull += random_sequence.count(guess_number[i]) - count_cow
