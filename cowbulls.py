@@ -73,8 +73,6 @@ def cows_and_bulls():
 L1 = Label(root, text="Welcome to Cows And Bulls!").pack()
 L2 = Label(root, text="Guess a 4-digit number: ")
 L2.place(x=5, y=20)
-L2 = Label(root, text="Guess a 4-digit number: ")
-L2.place(x=5, y=20)
 
 E1 = Spinbox(root, from_=0, to=10000)
 E1.place(x=5, y=55)
