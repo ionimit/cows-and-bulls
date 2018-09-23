@@ -17,7 +17,11 @@ def new_sequence():
 
 def cows_and_bulls():
     global random_sequence, count_guesses
-    guess_number = [int(d) for d in E1.get()]
+    try:
+        guess_number = [int(d) for d in E1.get()]
+    except ValueError:
+        messagebox.showinfo("Error", "Not a Valid input")
+        return
     if len(guess_number) != 4:
         messagebox.showinfo("Error", "Not a 4-digit number")
         return
