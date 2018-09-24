@@ -5,14 +5,17 @@ from tkinter import ttk
 
 root = Tk()
 root.title("Cows And Bulls")
-root.geometry("520x400")
+root.geometry("480x400")
+root.resizable(width=False, height=False)
 
 
 def new_sequence():
     global random_sequence, count_guesses
     random_sequence = [random.randrange(0, 10, 1) for i in range(4)]
     count_guesses = 0
+    l1.config(state=NORMAL)
     l1.delete('1.0', 'end')
+    l1.config(state=DISABLED)
 
 
 def cows_and_bulls():
@@ -63,15 +66,19 @@ def cows_and_bulls():
                 bull += guess_number.count(guess_number[i]) - count_cow
             else:
                 pass
-    l1.insert(INSERT, "".join(map(str, guess_number)) + "\n")
-    l1.insert(INSERT, str(cow) + " Cows" + " and " + str(bull) + " Bulls" + "\n")
+    l1.config(state=NORMAL)
+    l1.insert(END, "".join(map(str, guess_number)) + "\n")
+    l1.insert(END, str(cow) + " Cows" + " and " + str(bull) + " Bulls" + "\n")
+    l1.config(state=DISABLED)
     cow = 0
     bull = 0
     count_guess_repeat = []
     save_cow = [10, 10, 10, 10]
     if guess_number == random_sequence:
         new_sequence()
-        l1.insert(INSERT, "YOU WIN!\n")
+        l1.config(state=NORMAL)
+        l1.insert(END, "YOU WIN!\n")
+        l1.config(state=DISABLED)
 
 
 L1 = Label(root, text="Welcome to Cows And Bulls!").pack()
@@ -88,7 +95,7 @@ B2.pack(side=LEFT, anchor=S, padx=10, pady=10)
 
 sb1 = Scrollbar(root)
 sb1.pack(side=RIGHT, fill=Y)
-l1 = Text(root, height=15, width=30, yscrollcommand=sb1.set)
+l1 = Text(root, height=15, width=30, state=DISABLED, yscrollcommand=sb1.set)
 l1.pack(anchor=E, expand=True, fill=Y)
 sb1.config(command=l1.yview)
 l2 = Label(root, text="")
